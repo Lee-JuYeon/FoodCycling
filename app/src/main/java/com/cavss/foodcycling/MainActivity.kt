@@ -121,12 +121,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 
-data class ShareModel (
-    var shareUID : String,
-    var sharePlaceName : String,
-    var shareItems : List<ShareItem>,
 
-)
 
 enum class ItemType(val rawValue : String) {
     ExpriedFood("ExpriedFood"),
