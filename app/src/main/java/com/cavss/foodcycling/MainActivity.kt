@@ -42,6 +42,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.cavss.foodcycling.ui.custom.bottomnavi.BottomNavItem
 import com.cavss.foodcycling.ui.theme.FoodcyclingTheme
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -197,7 +198,6 @@ fun HomeScreen() {
 @Composable
 fun GoogleMapScreen() {
     val context = LocalContext.current
-//    val latLng = getMyLocation(context) // LatLng(40.9971, 29.1007)
     val latLng = LatLng(37.5830, 126.9770) // 청와대 좌표
 
     val place1 = LatLng(37.5796, 126.9770) // 경복궁
@@ -205,24 +205,6 @@ fun GoogleMapScreen() {
     val place3 = LatLng(37.5824, 126.9860) // 북촌 한옥마을
     val place4 = LatLng(37.5826, 126.9826) // 삼청동 거리
 
-//    val dataStore = DataStoreModule(context)
-//    var savedLatitude by remember {
-//        mutableDoubleStateOf(0.0)
-//    }
-//    var savedLongitude by remember {
-//        mutableDoubleStateOf(0.0)
-//    }
-//    LaunchedEffect(Unit) {
-//        dataStore.getLatitude.collect {
-//            savedLatitude = it
-//        }
-//    }
-//
-//    LaunchedEffect(Unit) {
-//        dataStore.getLongitude.collect {
-//            savedLongitude = it
-//        }
-//    }
 
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(latLng, 17f)
@@ -329,12 +311,7 @@ fun SettingsScreen() {
     }
 }
 
-sealed class BottomNavItem(val route: String, val icon: ImageVector, val title: String) {
-    object Home : BottomNavItem("home", Icons.Default.LocationOn, "Home")
-    object Profile : BottomNavItem("profile", Icons.Default.Person, "Profile")
-    object Settings : BottomNavItem("settings", Icons.Default.Settings, "Settings")
 
-}
 
 data class ShareModel (
     var shareUID : String,
