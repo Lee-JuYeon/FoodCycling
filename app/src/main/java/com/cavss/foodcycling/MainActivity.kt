@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    Greeting("Android")
+                    MainView()
                 }
             }
         }
@@ -83,7 +83,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun MainView() {
     val navController = rememberNavController()
 
     val items = listOf(
@@ -115,21 +115,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     FoodcyclingTheme {
-        Greeting("Android")
+        MainView()
     }
 }
