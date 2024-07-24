@@ -53,6 +53,7 @@ import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.cavss.foodcycling.ui.custom.bottomnavi.BottomNavigationBarView
+import com.cavss.foodcycling.ui.custom.bottomnavi.BottomNavigationScreenView
 
 class MainActivity : ComponentActivity() {
     init {
@@ -79,10 +80,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val navController = rememberNavController()
+
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Profile,
         BottomNavItem.Settings
+    )
+
+    val screens = linkedMapOf<BottomNavItem, @Composable () -> Unit>(
+        BottomNavItem.Home to { HomeScreen() },
+        BottomNavItem.Profile to { ProfileScreen() },
+        BottomNavItem.Settings to { SettingsScreen() },
     )
 
     Scaffold(
@@ -93,8 +101,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             )
         }
     ) { innerPadding ->
-        NavigationGraph(
+        BottomNavigationScreenView(
             navController = navController,
+            screens = screens,
             modifier = Modifier
                 .padding(innerPadding)
         )
@@ -102,20 +111,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 
 
-@Composable
-fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
-    NavHost(navController, startDestination = BottomNavItem.Home.route, modifier = modifier) {
-        composable(BottomNavItem.Home.route) {
-            HomeScreen()
-        }
-        composable(BottomNavItem.Profile.route) {
-            ProfileScreen()
-        }
-        composable(BottomNavItem.Settings.route) {
-            SettingsScreen()
-        }
-    }
-}
 
 @Composable
 fun HomeScreen() {
