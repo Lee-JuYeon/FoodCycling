@@ -20,13 +20,6 @@ android {
             useSupportLibrary = true
         }
 
-//        // buildConfig 사용
-//        buildConfigField("String", "googleMapApiKey", "\"${project.properties["googleMapApiKey"]}\"")
-//
-//        // 매니페스트 플레이스홀더 -> google map sdk api 전용
-//        manifestPlaceholders["googleMapApiKey"] = project.properties["googleMapApiKey"].toString()
-
-
     }
 
     buildTypes {
