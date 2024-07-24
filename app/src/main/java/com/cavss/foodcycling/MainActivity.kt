@@ -125,16 +125,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 
-data class ShareItem(
-    var itemUID : String,
-    var itemName : String,
-    var itemImage : String,
-    var itemGram : Int,
-    var itemType : ItemType,
-    var shareUID : String
-){
 
-}
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
