@@ -123,12 +123,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 
-enum class ItemType(val rawValue : String) {
-    ExpriedFood("ExpriedFood"),
-    DonatedFood("DonatedFood"),
-    DonatedCoupon("DonatedCoupon"),
-    SaleCoupon("SaleCoupon")
-}
+
 
 data class ShareItem(
     var itemUID : String,
