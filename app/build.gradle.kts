@@ -1,3 +1,6 @@
+// buildConfig 사용
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -20,6 +23,8 @@ android {
             useSupportLibrary = true
         }
 
+        // buildConfig 사용
+        buildConfigField("String", "geminiApiKey", getKey("geminiApiKey"))
     }
 
     buildTypes {
@@ -71,7 +76,18 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    // google map sdk
     implementation("com.google.android.gms:play-services-maps:19.0.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("com.google.maps.android:maps-compose:4.3.3")
+
+    // gemini api
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+
+}
+
+
+// buildConfig 사용
+fun getKey(propertyKey: String): String {
+    return gradleLocalProperties(rootDir).getProperty(propertyKey)
 }
